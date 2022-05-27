@@ -20,10 +20,33 @@ function App() {
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<object[]>([]);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   const [gameStart, setGameStart] = useState(false);
+  const [time, setTime] = useState('00:00:00');
+
+  const timer = () => {
+    let initialValue = 0;
+    let interval;
+    function formatTimer(sec: number) {
+      const initialTime = new Date(sec * 1000);
+
+      return initialTime.toLocaleTimeString('pt-br', {
+        hour12: false,
+        timeZone: 'GMT',
+      });
+    }
+
+    const setTimer = () => {
+      interval = setInterval(() => {
+        // eslint-disable-next-line no-plusplus
+        initialValue++;
+        setTime(formatTimer(initialValue));
+      }, 1000);
+    };
+
+    setTimer();
+  };
 
   const startTrivia = async () => {
     const newQuestions = await fetchQuizQuestions(
@@ -38,6 +61,7 @@ function App() {
 
     setGameStart(true);
     setGameOver(false);
+    timer();
   };
 
   const restartTrivia = () => {
@@ -91,11 +115,16 @@ function App() {
           userAnswer={userAnswers ? userAnswers[number] : undefined}
           callback={checkAnswer}
           score={score}
+          elapsedTime={time}
         />
       ) : null}
 
       {gameOver && gameStart ? (
-        <EndCard restartTrivia={restartTrivia} score={score} />
+        <EndCard
+          restartTrivia={restartTrivia}
+          score={score}
+          elapsedTime={time}
+        />
       ) : null}
 
       <GlobalStyle />

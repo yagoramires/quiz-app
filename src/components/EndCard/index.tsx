@@ -6,13 +6,19 @@ import { Title, Paragraph, Div, RestartButton } from './styles';
 interface StartProps {
   restartTrivia: () => void;
   score: number;
+  elapsedTime: string;
 }
 
-export default function EndCard({ restartTrivia, score }: StartProps) {
+export default function EndCard({
+  restartTrivia,
+  score,
+  elapsedTime,
+}: StartProps) {
   return (
     <Container>
       <Title>End Game!</Title>
       <Paragraph>Your final score is: {score}</Paragraph>
+      <Paragraph>Your elapsed time: {elapsedTime}</Paragraph>
       <Div>
         <RestartButton type="button" onClick={restartTrivia}>
           New Quiz

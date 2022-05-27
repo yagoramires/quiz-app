@@ -17,6 +17,7 @@ interface CardProps {
   questionNr: number;
   totalQuestions: number;
   score: number;
+  elapsedTime: string;
 }
 
 export default function QuestionCard({
@@ -27,6 +28,7 @@ export default function QuestionCard({
   questionNr,
   totalQuestions,
   score,
+  elapsedTime,
 }: CardProps) {
   return (
     <Container>
@@ -37,6 +39,7 @@ export default function QuestionCard({
             {questionNr} / {totalQuestions}
           </span>
         </QuestionNumber>
+        <QuestionNumber>Time: {elapsedTime}</QuestionNumber>
         <QuestionNumber>Score: {score}</QuestionNumber>
       </QuestionDiv>
       <Question> {question} </Question>
