@@ -25,27 +25,23 @@ function App() {
   const [gameStart, setGameStart] = useState(false);
   const [time, setTime] = useState('00:00:00');
 
-  const timer = () => {
-    let initialValue = 0;
-    let interval;
-    function formatTimer(sec: number) {
-      const initialTime = new Date(sec * 1000);
+  let initialValue = 0;
+  function formatTimer(sec: number) {
+    const initialTime = new Date(sec * 1000);
 
-      return initialTime.toLocaleTimeString('pt-br', {
-        hour12: false,
-        timeZone: 'GMT',
-      });
-    }
+    return initialTime.toLocaleTimeString('pt-br', {
+      hour12: false,
+      timeZone: 'GMT',
+    });
+  }
 
-    const setTimer = () => {
-      interval = setInterval(() => {
-        // eslint-disable-next-line no-plusplus
-        initialValue++;
-        setTime(formatTimer(initialValue));
-      }, 1000);
-    };
-
-    setTimer();
+  const setTimer = () => {
+    const interval = setInterval(() => {
+      // eslint-disable-next-line no-plusplus
+      initialValue++;
+      setTime(formatTimer(initialValue));
+    }, 1000);
+    return interval;
   };
 
   const startTrivia = async () => {
@@ -61,7 +57,9 @@ function App() {
 
     setGameStart(true);
     setGameOver(false);
-    timer();
+
+    const interval = setTimer();
+    return interval;
   };
 
   const restartTrivia = () => {
@@ -124,6 +122,7 @@ function App() {
           restartTrivia={restartTrivia}
           score={score}
           elapsedTime={time}
+          total={TOTAL_QUESTIONS}
         />
       ) : null}
 
@@ -133,3 +132,6 @@ function App() {
 }
 
 export default App;
+function interval(interval: any) {
+  throw new Error('Function not implemented.');
+}

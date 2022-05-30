@@ -17,7 +17,7 @@ Practice and test your knowledge by answering questions in a quiz application.
 
 ## Bonus features
 
--   [ ] User can share the result of a quiz on social media
+-   [x] User can share the result of a quiz on social media
 -   [ ] Add multiple quizzes to the application. User can select which one to take
 -   [ ] User can create an account and have all the scores saved in his dashboard. User can complete a quiz multiple times
 

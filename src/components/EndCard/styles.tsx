@@ -9,6 +9,7 @@ export const Title = styled.h1`
 
   margin-top: 3rem;
 `;
+
 export const Paragraph = styled.p`
   margin: 1rem 0 3rem 0;
   font-size: 1.5rem;
@@ -19,10 +20,36 @@ export const Paragraph = styled.p`
   text-align: center;
 `;
 
+export const PassText = styled.p`
+  margin: 1rem 0 3rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #7bff6f;
+
+  text-align: center;
+`;
+
+export const FailTest = styled.p`
+  margin: 1rem 0 3rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #c3073f;
+
+  text-align: center;
+`;
+
 export const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const ShareDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
 `;
 
 export const RestartButton = styled.button`
