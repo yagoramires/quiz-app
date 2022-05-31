@@ -24,7 +24,6 @@ function App() {
   const [gameOver, setGameOver] = useState(true);
   const [gameStart, setGameStart] = useState(false);
   const [time, setTime] = useState('00:00:00');
-  const [intervalCache, setIntervalCache] = useState<any>();
 
   let initialValue = 0;
   function formatTimer(sec: number) {
@@ -42,7 +41,7 @@ function App() {
       initialValue++;
       setTime(formatTimer(initialValue));
     }, 1000);
-    setIntervalCache(interval);
+    return interval;
   };
 
   const startTrivia = async () => {
@@ -50,7 +49,7 @@ function App() {
       TOTAL_QUESTIONS,
       Difficulty.EASY
     );
-    setTime(formatTimer(0));
+
     setQuestions(newQuestions);
     setScore(0);
     setUserAnswers([]);
@@ -58,7 +57,9 @@ function App() {
 
     setGameStart(true);
     setGameOver(false);
-    setTimer();
+
+    const interval = setTimer();
+    return interval;
   };
 
   const restartTrivia = () => {
@@ -68,13 +69,10 @@ function App() {
 
   const nextQuestion = () => {
     // Ir para proxima pergunta se nao for a ultima
-    console.log(intervalCache);
     const nextQuestion = number + 1;
-    // console.log(interval);
+
     if (nextQuestion === TOTAL_QUESTIONS) {
       setGameOver(true);
-      // console.log(interval);
-      clearInterval(intervalCache);
     } else {
       setNumber(nextQuestion);
     }
@@ -134,3 +132,6 @@ function App() {
 }
 
 export default App;
+function interval(interval: any) {
+  throw new Error('Function not implemented.');
+}
