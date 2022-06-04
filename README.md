@@ -25,7 +25,7 @@ Practice and test your knowledge by answering questions in a quiz application.
 
 -   [Open Trivia Database](https://opentdb.com/api_config.php)
 
--   [App Working](https://quiz-app-jade-gamma.vercel.app/)
+-   [App Working](https://quiz-app-yagoramires.vercel.app/)
 
 
 ### Autor
